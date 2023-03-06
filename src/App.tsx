@@ -1,18 +1,22 @@
 import { useQuery, gql } from '@apollo/client';
 
-const TEST_QUERY = gql`
+const FILMS_QUERY = gql`
   query {
-    pokemon_v2_itemname {
-      item_id
-      name
+    allFilms {
+      films {
+        title
+        director
+        releaseDate
+      }
     }
   }
 `;
 
 function App() {
-  const { loading, error, data } = useQuery(TEST_QUERY);
+  const { loading, error, data } = useQuery(FILMS_QUERY);
 
   if (loading) return <h1>Loading...</h1>;
+
   console.log(data);
 
   return <div className="App"></div>;
